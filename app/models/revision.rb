@@ -1,0 +1,3 @@
+class Revision < ApplicationRecord
+end
+  

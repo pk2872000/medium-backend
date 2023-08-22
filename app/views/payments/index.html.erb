@@ -1,0 +1,33 @@
+<button id="rzp-button1">Pay with Razorpay</button>
+<h1>hello</h1>
+<%# <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+
+orderId="order_MPrVDCwZK4nyW1"
+
+var options = {
+    "key": "rzp_test_mhR64CrGFAi1a9",
+    "amount": "300",
+    "currency": "INR",
+    "name": "Pavan",
+    "description": "Test Transaction",
+
+    "order_id": orderId,
+
+    "callback_url": "http://127.0.0.1:4567/payment"
+};
+var rzp1 = new Razorpay(options);
+rzp1.on('payment.failed', function (response){
+        alert(response.error.code);
+        alert(response.error.description);
+        alert(response.error.source);
+        alert(response.error.step);
+        alert(response.error.reason);
+        alert(response.error.metadata.order_id);
+        alert(response.error.metadata.payment_id);
+});
+document.getElementById('rzp-button1').onclick = function(e){
+    rzp1.open();
+    e.preventDefault();
+}
+</script> %>
