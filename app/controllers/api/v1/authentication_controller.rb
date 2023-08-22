@@ -3,7 +3,7 @@ module Api
     class AuthenticationController < ApplicationController
       before_action :authenticate_user, only: :logout
       respond_to :json
-
+#
       def login
         user = User.find_by(email: params[:email])
 
